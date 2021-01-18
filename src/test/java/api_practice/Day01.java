@@ -25,7 +25,7 @@ public class Day01 {
     }
 
 
-    @DisplayName(" Test")
+    @DisplayName("Get with english letters")
     @Test
     public void TestGet1() {
        given()
@@ -38,6 +38,69 @@ public class Day01 {
                .statusCode(is(200))
                .assertThat().contentType("application/json")
        ;
+
+    }
+
+    @DisplayName("Get with russian letters")
+    @Test
+    public void TestGet2() {
+        given()
+                .log().all()
+                .formParam("name", "Аня").
+        when()
+                .get("/hello").
+        then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("application/json")
+        ;
+
+    }
+
+    @DisplayName("Get with english letters and numbers")
+    @Test
+    public void TestGet3() {
+        given()
+                .log().all()
+                .formParam("name", "Ana123").
+        when()
+                .get("/hello").
+        then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("application/json")
+        ;
+
+    }
+
+    @DisplayName("Get with empty name")
+    @Test
+    public void TestGet4() {
+        given()
+                .log().all()
+                .formParam("name", "").
+        when()
+                .get("/hello").
+        then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("application/json")
+        ;
+
+    }
+
+    @DisplayName("Get with without param name")
+    @Test
+    public void TestGet5() {
+        given()
+                .log().all().
+        when()
+                .get("/hello").
+        then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("application/json")
+        ;
 
     }
 
