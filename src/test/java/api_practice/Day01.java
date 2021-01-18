@@ -1,7 +1,5 @@
 package api_practice;
 
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +10,8 @@ import static org.hamcrest.Matchers.* ;
 
 public class Day01 {
 
+
+    //https://playground.learnqa.ru/ajax/api_dev/hello
 
     @BeforeAll
     public static void setUp() {
@@ -25,7 +25,7 @@ public class Day01 {
     }
 
 
-    @DisplayName("Get with english letters")
+    @DisplayName("GET with english letters")
     @Test
     public void TestGet1() {
        given()
@@ -36,12 +36,12 @@ public class Day01 {
        then()
                .log().all()
                .statusCode(is(200))
-               .assertThat().contentType("application/json")
+               .assertThat().contentType("text/html")
        ;
 
     }
 
-    @DisplayName("Get with russian letters")
+    @DisplayName("GET with russian letters")
     @Test
     public void TestGet2() {
         given()
@@ -52,12 +52,12 @@ public class Day01 {
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("application/json")
+                .assertThat().contentType("text/html")
         ;
 
     }
 
-    @DisplayName("Get with english letters and numbers")
+    @DisplayName("GET with english letters and numbers")
     @Test
     public void TestGet3() {
         given()
@@ -68,12 +68,12 @@ public class Day01 {
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("application/json")
+                .assertThat().contentType("text/html")
         ;
 
     }
 
-    @DisplayName("Get with empty name")
+    @DisplayName("GET with empty name")
     @Test
     public void TestGet4() {
         given()
@@ -84,12 +84,12 @@ public class Day01 {
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("application/json")
+                .assertThat().contentType("text/html")
         ;
 
     }
 
-    @DisplayName("Get with without param name")
+    @DisplayName("GET with without param name")
     @Test
     public void TestGet5() {
         given()
@@ -99,9 +99,11 @@ public class Day01 {
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("application/json")
+                .assertThat().contentType("text/html")
         ;
 
     }
+
+
 
 }
