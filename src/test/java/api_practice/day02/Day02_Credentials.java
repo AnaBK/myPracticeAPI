@@ -1,42 +1,5 @@
 package api_practice.day02;
 
-
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.http.Cookie;
-import io.restassured.http.Cookies;
-import io.restassured.response.Response;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.Row;
-import static io.restassured.RestAssured.*;
-import static org.apache.poi.ss.usermodel.Cell.*;
-import static org.apache.poi.ss.usermodel.Workbook.*;
-import static org.hamcrest.Matchers.* ;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 public class Day02_Credentials {
 
 //    Сегодня к нам пришел наш коллега и сказал, что забыл свой пароль от важного сервиса. Он просит нас помочь ему написать программу, которая подберет его пароль.
@@ -68,44 +31,5 @@ public class Day02_Credentials {
 //Как всегда, код нашей программы выкладываем ссылкой в поле "Ссылка на коммит или файл на облаке"
 //А правильный пароль и секретную фразу, которая возвращается при вызове метода check_auth_cookie с правильной cookie - в поле "Ответ"
 
-
-    private static String inputFile;
-
-    @BeforeAll
-    public static void setUp() throws IOException {
-        baseURI = "https://playground.learnqa.ru";
-        basePath = "/ajax/api";
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        reset();
-    }
-
-
-    @DisplayName("POST")
-    @Test
-    public void TestGet1() {
-
-//        String path = "C:\\Users\\lien8\\Desktop\\passwords.xlsx";
-//        NewExcel test = new NewExcel();
-//        test.setInputFile("C:\\Users\\lien8\\Desktop\\passwords.xlsx");
-//        test.read();
-
-        given()
-                .log().all()
-                        .queryParam("login", "super_admin")
-                        .queryParams("password", "")
-                .contentType(ContentType.TEXT)
-        .when()
-                .post("/get_auth_cookie")
-        .then()
-                .statusCode(200)
-                .extract()
-                .response()
-                .getDetailedCookies()
-        ;
-
-    }
 
 }
