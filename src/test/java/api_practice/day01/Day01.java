@@ -1,4 +1,4 @@
-package api_practice;
+package api_practice.day01;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
