@@ -16,7 +16,7 @@ public class Day01 {
     @BeforeAll
     public static void setUp() {
         baseURI = "https://playground.learnqa.ru";
-        basePath = "/ajax/api";
+
     }
 
     @AfterAll
@@ -32,7 +32,7 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana").
        when()
-                .get("/hello").
+                .get("/ajax/api/hello").
        then()
                .log().all()
                .statusCode(is(200))
@@ -48,7 +48,7 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Аня").
         when()
-                .get("/hello").
+                .get("/ajax/api/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
@@ -64,7 +64,7 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana123").
         when()
-                .get("/hello").
+                .get("/ajax/api/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
@@ -80,7 +80,7 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "").
         when()
-                .get("/hello").
+                .get("/ajax/api/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
@@ -95,8 +95,88 @@ public class Day01 {
         given()
                 .log().all().
         when()
-                .get("/hello").
+                .get("/ajax/api/hello").
         then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("text/html")
+        ;
+
+    }
+
+
+    @DisplayName("GET with english letters")
+    @Test
+    public void TestGet6() {
+        given()
+                .log().all()
+                .formParam("name", "Ana").
+                when()
+                .get("/ajax/api_dev/hello").
+                then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("text/html")
+        ;
+
+    }
+
+    @DisplayName("GET with russian letters")
+    @Test
+    public void TestGet7() {
+        given()
+                .log().all()
+                .formParam("name", "Аня").
+                when()
+                .get("/ajax/api_dev/hello").
+                then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("text/html")
+        ;
+
+    }
+
+    @DisplayName("GET with english letters and numbers")
+    @Test
+    public void TestGet8() {
+        given()
+                .log().all()
+                .formParam("name", "Ana123").
+                when()
+                .get("/ajax/api_dev/hello").
+                then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("text/html")
+        ;
+
+    }
+
+    @DisplayName("GET with empty name")
+    @Test
+    public void TestGet9() {
+        given()
+                .log().all()
+                .formParam("name", "").
+                when()
+                .get("/ajax/api_dev/hello").
+                then()
+                .log().all()
+                .statusCode(is(200))
+                .assertThat().contentType("text/html")
+        ;
+
+    }
+
+    @DisplayName("GET with without param name")
+    @Test
+    public void TestGet10() {
+        given()
+                .log().all().
+                when()
+                .get("/ajax/api_dev/hello").
+                then()
                 .log().all()
                 .statusCode(is(200))
                 .assertThat().contentType("text/html")
