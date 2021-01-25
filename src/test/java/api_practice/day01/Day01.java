@@ -10,6 +10,8 @@ import static org.hamcrest.Matchers.* ;
 
 public class Day01 {
 
+    static String url = "/ajax/api";
+    static String url_dev = "/ajax/api_dev";
 
     //https://playground.learnqa.ru/ajax/api_dev/hello
 
@@ -32,11 +34,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana").
        when()
-                .get("/ajax/api/hello").
+                .get(url + "/hello").
        then()
                .log().all()
                .statusCode(is(200))
-               .assertThat().contentType("text/html")
+               .assertThat().contentType("application/json")
        ;
 
     }
@@ -48,11 +50,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Аня").
         when()
-                .get("/ajax/api/hello").
+        .get(url + "/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -64,11 +66,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana123").
         when()
-                .get("/ajax/api/hello").
+                .get(url + "/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -80,11 +82,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "").
         when()
-                .get("/ajax/api/hello").
+                .get(url + "/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -95,11 +97,11 @@ public class Day01 {
         given()
                 .log().all().
         when()
-                .get("/ajax/api/hello").
+                .get(url + "/hello").
         then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -112,11 +114,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana").
                 when()
-                .get("/ajax/api_dev/hello").
+                .get(url_dev + "/hello").
                 then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -128,11 +130,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Аня").
                 when()
-                .get("/ajax/api_dev/hello").
+                .get(url_dev + "/hello").
                 then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -144,11 +146,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "Ana123").
                 when()
-                .get("/ajax/api_dev/hello").
+                .get(url_dev + "/hello").
                 then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -160,11 +162,11 @@ public class Day01 {
                 .log().all()
                 .formParam("name", "").
                 when()
-                .get("/ajax/api_dev/hello").
+                .get(url_dev + "/hello").
                 then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
@@ -175,11 +177,11 @@ public class Day01 {
         given()
                 .log().all().
                 when()
-                .get("/ajax/api_dev/hello").
+                .get(url_dev + "/hello").
                 then()
                 .log().all()
                 .statusCode(is(200))
-                .assertThat().contentType("text/html")
+                .assertThat().contentType("application/json")
         ;
 
     }
